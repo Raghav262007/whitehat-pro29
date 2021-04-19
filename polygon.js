@@ -5,19 +5,20 @@ class Polygon {
       friction: 1.0,
       density: 1.0,
     };
-    this.polygon_img = loadImage("polygon.png");
+    this.image = loadImage("polygon.png");
 
-    this.polygon = Bodies.polygon(50, 200, 5, 20);
-    World.add(world, this.polygon);
+    this.body = Bodies.polygon(50, 200, 5, 20);
+    World.add(world, this.body);
   }
 
   fly() {
-    this.polygon.bodyA = null;
+    this.image.bodyA = null;
   }
 
   display() {
-    image(this.polygon_img, 100, 200, 40, 40);
+    var pos = this.body.position;
 
+    image(this.image, pos.x, pos.y, 40, 40);
     imageMode(CENTER);
   }
 }

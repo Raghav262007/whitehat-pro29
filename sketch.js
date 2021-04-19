@@ -65,7 +65,7 @@ function setup() {
   block29 = new Block(700, 40, 30, 40);
 
   polygon = new Polygon(); //this.polygon, { x: 150, y: 500 }
-  sling2 = new SlingShot(polygon.body, { x: 130, y: 180 });
+  sling2 = new SlingShot(polygon.body, { x: 120, y: 220 });
 }
 function draw() {
   background(56, 44, 44);
@@ -119,4 +119,19 @@ function draw() {
 
   polygon.display();
   sling2.display();
+}
+
+function mouseDragged() {
+  Matter.Body.setPosition(polygon.body, { x: mouseX, y: mouseY });
+}
+
+function mouseReleased() {
+  sling2.fly();
+}
+
+function keyPressed() {
+  if (keyCode === 32) {
+    Matter.Body.setPosition(polygon.body, { x: 120, y: 220 });
+    sling2.attach(polygon.body);
+  }
 }

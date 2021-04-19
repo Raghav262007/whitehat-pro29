@@ -15,6 +15,17 @@ class SlingShot {
     this.sling.bodyA = null;
   }
 
+  attach() {
+    sling2 = new SlingShot(polygon.body, { x: 120, y: 220 });
+    function mouseDragged() {
+      Matter.Body.setPosition(polygon.body, { x: mouseX, y: mouseY });
+    }
+
+    function mouseReleased() {
+      sling2.fly();
+    }
+  }
+
   display() {
     if (this.sling.bodyA) {
       var pointA = this.sling.bodyA.position;
